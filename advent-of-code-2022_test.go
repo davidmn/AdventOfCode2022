@@ -10,3 +10,8 @@ func TestHelloName(t *testing.T) {
 	var result = doThing(1)
 	assert.Equal(t, 1, result, "doThing should return the input")
 }
+
+func TestFailing(t *testing.T) {
+	var result = doThing(1)
+	assert.Equal(t, 0, result, "doThing should return the input")
+}

@@ -6,12 +6,12 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestHelloName(t *testing.T) {
-	var result = doThing(1)
-	assert.Equal(t, 1, result, "doThing should return the input")
+func TestCountCaloriesDay1Part1(t *testing.T) {
+	var result = CountCaloriesDay1Part1()
+	assert.Equal(t, 69177, result)
 }
 
-func TestFailing(t *testing.T) {
-	var result = doThing(1)
-	assert.Equal(t, 0, result, "doThing should return the input")
+func TestCountCaloriesDay1Part2(t *testing.T) {
+	var result = CountCaloriesDay1Part2()
+	assert.Equal(t, 207456, result)
 }

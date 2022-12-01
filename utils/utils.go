@@ -1,11 +1,11 @@
-package main
+package utils
 
 import (
 	"bufio"
 	"os"
 )
 
-func readFile(path string) []string {
+func ReadFile(path string) []string {
 	file, _ := os.Open(path)
 	defer file.Close()
 

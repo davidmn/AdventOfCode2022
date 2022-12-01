@@ -1,9 +1,11 @@
-package main
+package day01
 
 import (
 	"fmt"
 	"sort"
 	"strconv"
+
+	"github.com/davidmn/AdventOfCode2022/utils"
 )
 
 func main() {
@@ -11,7 +13,7 @@ func main() {
 }
 
 func CountCaloriesDay1Part1() int {
-	fileLines := readFile("./inputs/day1.txt")
+	fileLines := utils.ReadFile("../inputs/day1.txt")
 
 	var largestTotal = 0
 	var total = 0
@@ -34,7 +36,7 @@ func CountCaloriesDay1Part1() int {
 }
 
 func CountCaloriesDay1Part2() int {
-	fileLines := readFile("./inputs/day1.txt")
+	fileLines := utils.ReadFile("../inputs/day1.txt")
 
 	caloriesPerElf := make([]int, 0)
 

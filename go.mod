@@ -1,4 +1,4 @@
-module advent-of-code-2022
+module github.com/davidmn/AdventOfCode2022
 
 go 1.19
 

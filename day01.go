@@ -1,9 +1,7 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"sort"
 	"strconv"
 )
@@ -13,23 +11,18 @@ func main() {
 }
 
 func CountCaloriesDay1Part1() int {
-	file, _ := os.Open("./inputs/day1.txt")
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
+	fileLines := readFile("./inputs/day1.txt")
 
 	var largestTotal = 0
 	var total = 0
-	for scanner.Scan() {
-		var line = scanner.Text()
 
-		if line == "" {
+	for i := 0; i < len(fileLines); i++ {
+		if fileLines[i] == "" {
 			total = 0
 			continue
 		}
 
-		calories, _ := strconv.Atoi(line)
-
+		calories, _ := strconv.Atoi(fileLines[i])
 		total += calories
 
 		if total > largestTotal {
@@ -41,24 +34,19 @@ func CountCaloriesDay1Part1() int {
 }
 
 func CountCaloriesDay1Part2() int {
-	file, _ := os.Open("./inputs/day1.txt")
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
+	fileLines := readFile("./inputs/day1.txt")
 
 	caloriesPerElf := make([]int, 0)
 
 	var total = 0
-	for scanner.Scan() {
-		var line = scanner.Text()
-
-		if line == "" {
+	for i := 0; i < len(fileLines); i++ {
+		if fileLines[i] == "" {
 			caloriesPerElf = append(caloriesPerElf, total)
 			total = 0
 			continue
 		}
 
-		calories, _ := strconv.Atoi(line)
+		calories, _ := strconv.Atoi(fileLines[i])
 
 		total += calories
 	}

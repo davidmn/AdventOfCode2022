@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"log"
 	"os"
 	"sort"
 	"strconv"
@@ -14,10 +13,7 @@ func main() {
 }
 
 func CountCaloriesDay1Part1() int {
-	file, err := os.Open("./inputs/day1.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
+	file, _ := os.Open("./inputs/day1.txt")
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
@@ -32,11 +28,7 @@ func CountCaloriesDay1Part1() int {
 			continue
 		}
 
-		calories, err := strconv.Atoi(line)
-
-		if err != nil {
-			log.Fatal(err)
-		}
+		calories, _ := strconv.Atoi(line)
 
 		total += calories
 
@@ -45,18 +37,11 @@ func CountCaloriesDay1Part1() int {
 		}
 	}
 
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
-	}
-
 	return largestTotal
 }
 
 func CountCaloriesDay1Part2() int {
-	file, err := os.Open("./inputs/day1.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
+	file, _ := os.Open("./inputs/day1.txt")
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
@@ -73,17 +58,9 @@ func CountCaloriesDay1Part2() int {
 			continue
 		}
 
-		calories, err := strconv.Atoi(line)
-
-		if err != nil {
-			log.Fatal(err)
-		}
+		calories, _ := strconv.Atoi(line)
 
 		total += calories
-	}
-
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
 	}
 
 	sort.Slice(caloriesPerElf, func(p, q int) bool {

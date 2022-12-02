@@ -7,5 +7,11 @@ import (
 )
 
 func TestDay2(t *testing.T) {
-	assert.Equal(t, true, true)
+	score := CalculateScore("../inputs/day2.txt")
+	assert.Equal(t, 12586, score)
+}
+
+func TestDay2Example(t *testing.T) {
+	score := CalculateScore("../inputs/day2example.txt")
+	assert.Equal(t, 15, score)
 }

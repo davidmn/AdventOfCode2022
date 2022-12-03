@@ -8,8 +8,7 @@ import (
 
 func Solve(path string) int {
 	lines := utils.ReadFile(path)
-
-	var total = 0
+	total := 0
 
 	for i := 0; i < len(lines); i++ {
 		letter, _ := processLine(lines[i])
@@ -17,6 +16,33 @@ func Solve(path string) int {
 	}
 
 	return total
+}
+
+func SolvePart2(path string) int {
+	lines := utils.ReadFile(path)
+	total := 0
+
+	if len(lines)%3 != 0 {
+		panic("wow now")
+	}
+
+	for i := 0; i < len(lines); i += 3 {
+		letter, _ := processTrio(lines[i], lines[i+1], lines[i+2])
+		total += determinePriority(letter)
+	}
+
+	return total
+}
+
+func processTrio(line1 string, line2 string, line3 string) (rune, error) {
+	intersection1 := intersection([]rune(line1), []rune(line2))
+	intersection2 := intersection([]rune(line2), []rune(line3))
+	intersectionOfIntersections := intersection(intersection1, intersection2)
+
+	if len(intersectionOfIntersections) == 1 {
+		return intersectionOfIntersections[0], nil
+	}
+	return 0, errors.New("oh no")
 }
 
 func processLine(line string) (rune, error) {

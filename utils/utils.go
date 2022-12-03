@@ -18,3 +18,28 @@ func ReadFile(path string) []string {
 
 	return slice
 }
+
+func Intersection(slice1, slice2 []rune) (inter []rune) {
+	hash := make(map[rune]bool)
+	for _, e := range slice1 {
+		hash[e] = true
+	}
+	for _, e := range slice2 {
+		if hash[e] {
+			inter = append(inter, e)
+		}
+	}
+	inter = removeDuplicates(inter)
+	return
+}
+
+func removeDuplicates(elements []rune) (deduplicated []rune) {
+	encountered := make(map[rune]bool)
+	for _, element := range elements {
+		if !encountered[element] {
+			deduplicated = append(deduplicated, element)
+			encountered[element] = true
+		}
+	}
+	return
+}

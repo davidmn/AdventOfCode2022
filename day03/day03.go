@@ -35,9 +35,9 @@ func SolvePart2(path string) int {
 }
 
 func processTrio(line1 string, line2 string, line3 string) (rune, error) {
-	intersection1 := intersection([]rune(line1), []rune(line2))
-	intersection2 := intersection([]rune(line2), []rune(line3))
-	intersectionOfIntersections := intersection(intersection1, intersection2)
+	intersection1 := utils.Intersection([]rune(line1), []rune(line2))
+	intersection2 := utils.Intersection([]rune(line2), []rune(line3))
+	intersectionOfIntersections := utils.Intersection(intersection1, intersection2)
 
 	if len(intersectionOfIntersections) == 1 {
 		return intersectionOfIntersections[0], nil
@@ -52,38 +52,13 @@ func processLine(line string) (rune, error) {
 	firstPocket := runeArray[0:halfLength]
 	secondPocket := runeArray[halfLength:]
 
-	intersection := intersection(firstPocket, secondPocket)
+	intersection := utils.Intersection(firstPocket, secondPocket)
 
 	if len(intersection) == 1 {
 		return intersection[0], nil
 	}
 
 	return 0, errors.New("oh no")
-}
-
-func intersection(slice1, slice2 []rune) (inter []rune) {
-	hash := make(map[rune]bool)
-	for _, e := range slice1 {
-		hash[e] = true
-	}
-	for _, e := range slice2 {
-		if hash[e] {
-			inter = append(inter, e)
-		}
-	}
-	inter = removeDuplicates(inter)
-	return
-}
-
-func removeDuplicates(elements []rune) (deduplicated []rune) {
-	encountered := make(map[rune]bool)
-	for _, element := range elements {
-		if !encountered[element] {
-			deduplicated = append(deduplicated, element)
-			encountered[element] = true
-		}
-	}
-	return
 }
 
 func determinePriority(letter rune) int {

@@ -48,9 +48,26 @@ func TestIntersectionBothEmpty(t *testing.T) {
 	assert.Equal(t, 0, len(intersection))
 }
 
-func TestGenerateRange(t *testing.T) {
-	r := GenerateRange(0, 10)
-	assert.Equal(t, 11, len(r))
-	assert.Equal(t, 0, r[0])
-	assert.Equal(t, 10, r[10])
+func TestIntersectionWithInts(t *testing.T) {
+	a := []int{1, 2, 3}
+	b := []int{2}
+	intersection := Intersection(a, b)
+	assert.Equal(t, 1, len(intersection))
+	assert.Equal(t, 2, intersection[0])
+}
+
+func TestRemoveDuplicatesInts(t *testing.T) {
+	a := []int{1, 2, 2, 3}
+
+	b := RemoveDuplicates(a)
+
+	assert.Equal(t, 3, len(b))
+}
+
+func TestRemoveDuplicatesRunes(t *testing.T) {
+	a := []rune{'a', 'a'}
+
+	b := RemoveDuplicates(a)
+
+	assert.Equal(t, 1, len(b))
 }

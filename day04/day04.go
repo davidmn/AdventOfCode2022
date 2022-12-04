@@ -44,7 +44,7 @@ func processLinePart1(line string) bool {
 	shiftARange := utils.GenerateRange(shiftAStart, shiftAEnd)
 	shiftBRange := utils.GenerateRange(shiftBStart, shiftBEnd)
 
-	intersection := utils.IntersectionInts(shiftARange, shiftBRange)
+	intersection := utils.Intersection(shiftARange, shiftBRange)
 
 	return len(intersection) == len(shiftARange) || len(intersection) == len(shiftBRange)
 }
@@ -58,7 +58,7 @@ func processLinePart2(line string) bool {
 	shiftARange := utils.GenerateRange(shiftAStart, shiftAEnd)
 	shiftBRange := utils.GenerateRange(shiftBStart, shiftBEnd)
 
-	intersection := utils.IntersectionInts(shiftARange, shiftBRange)
+	intersection := utils.Intersection(shiftARange, shiftBRange)
 
 	return len(intersection) > 0
 }

@@ -5,6 +5,10 @@ import (
 	"os"
 )
 
+type Comparable interface {
+	int | rune
+}
+
 func ReadFile(path string) []string {
 	file, _ := os.Open(path)
 	defer file.Close()
@@ -19,8 +23,8 @@ func ReadFile(path string) []string {
 	return slice
 }
 
-func Intersection(slice1, slice2 []rune) (inter []rune) {
-	hash := make(map[rune]bool)
+func Intersection[T Comparable](slice1, slice2 []T) (inter []T) {
+	hash := make(map[T]bool)
 	for _, e := range slice1 {
 		hash[e] = true
 	}
@@ -29,44 +33,7 @@ func Intersection(slice1, slice2 []rune) (inter []rune) {
 			inter = append(inter, e)
 		}
 	}
-	inter = removeDuplicates(inter)
-	return
-}
-
-func removeDuplicates(elements []rune) (deduplicated []rune) {
-	encountered := make(map[rune]bool)
-	for _, element := range elements {
-		if !encountered[element] {
-			deduplicated = append(deduplicated, element)
-			encountered[element] = true
-		}
-	}
-	return
-}
-
-
-func IntersectionInts(slice1, slice2 []int) (inter []int) {
-	hash := make(map[int]bool)
-	for _, e := range slice1 {
-		hash[e] = true
-	}
-	for _, e := range slice2 {
-		if hash[e] {
-			inter = append(inter, e)
-		}
-	}
-	inter = removeDuplicatesInts(inter)
-	return
-}
-
-func removeDuplicatesInts(elements []int) (deduplicated []int) {
-	encountered := make(map[int]bool)
-	for _, element := range elements {
-		if !encountered[element] {
-			deduplicated = append(deduplicated, element)
-			encountered[element] = true
-		}
-	}
+	inter = RemoveDuplicates(inter)
 	return
 }
 
@@ -78,4 +45,15 @@ func GenerateRange(start, end int) []int {
 	}
 
 	return r
+}
+
+func RemoveDuplicates[T Comparable](elements []T) (deduplicated []T) {
+	encountered := make(map[T]bool)
+	for _, element := range elements {
+		if !encountered[element] {
+			deduplicated = append(deduplicated, element)
+			encountered[element] = true
+		}
+	}
+	return
 }

@@ -71,3 +71,24 @@ func TestRemoveDuplicatesRunes(t *testing.T) {
 
 	assert.Equal(t, 1, len(b))
 }
+
+func TestReverse(t *testing.T) {
+	a := []string{"a", "b", "c"}
+
+	Reverse(a)
+
+	assert.Equal(t, "c", a[0])
+	assert.Equal(t, "b", a[1])
+	assert.Equal(t, "a", a[2])
+	assert.Equal(t, 3, len(a))
+}
+
+func TestRemoveIndex(t *testing.T) {
+	a := []string{"a", "b", "c"}
+
+	a = RemoveIndex(a, 2)
+
+	assert.Equal(t, "a", a[0])
+	assert.Equal(t, "b", a[1])
+	assert.Equal(t, 2, len(a))
+}

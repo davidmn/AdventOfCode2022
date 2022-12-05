@@ -57,3 +57,13 @@ func RemoveDuplicates[T Comparable](elements []T) (deduplicated []T) {
 	}
 	return
 }
+
+func Reverse(input []string) {
+	for i, j := 0, len(input)-1; i < j; i, j = i+1, j-1 {
+		input[i], input[j] = input[j], input[i]
+	}
+}
+
+func RemoveIndex(s []string, index int) []string {
+	return append(s[:index], s[index+1:]...)
+}
